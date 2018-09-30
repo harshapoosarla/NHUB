@@ -22,13 +22,13 @@ namespace Project_28Sep2018 {
         protected global::System.Web.UI.WebControls.Label editnames;
         
         /// <summary>
-        /// names control.
+        /// ServiceLineName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox names;
+        protected global::System.Web.UI.WebControls.Label ServiceLineName;
         
         /// <summary>
         /// editslms control.
@@ -38,6 +38,15 @@ namespace Project_28Sep2018 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label editslms;
+        
+        /// <summary>
+        /// SLMcheckList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBoxList SLMcheckList;
         
         /// <summary>
         /// cancel control.

@@ -23,5 +23,7 @@ namespace DAL.Repository
 
             return SLMTab;
           }
+
+       
     }
 }

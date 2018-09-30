@@ -36,7 +36,7 @@ namespace Project_28Sep2018
 
                 HyperLink edit = new HyperLink();
                 edit.Text = "Edit";
-                edit.NavigateUrl = "~/SAServiceLinesEdit.aspx ? ID= " + lineRepository.servicelinelist[count].Id;
+                edit.NavigateUrl = "~/SAServiceLinesEdit.aspx?ID=" + lineRepository.servicelinelist[count].Id+"&&ServLineName="+ lineRepository.servicelinelist[count].Name;
                 edit.Width = 150;
                 PlaceHolder1.Controls.Add(edit);
 

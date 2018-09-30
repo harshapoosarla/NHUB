@@ -8,15 +8,15 @@
                     <asp:Label ID="editnames" runat="server" Text="Name:"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="names" runat="server" Height="22px" Width="260px"></asp:TextBox>
+                    <asp:Label ID="ServiceLineName" runat="server" Text="ServiceLineName"></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td style="width: 374px">
-                    <asp:Label ID="editslms" runat="server" Text="Operation Managers:"></asp:Label>
+                    <asp:Label ID="editslms" runat="server" Text="ServiceLine Managers:"></asp:Label>
                 </td>
                 <td>
-                    <asp:CheckBoxList runat="server">
+                    <asp:CheckBoxList runat="server" ID="SLMcheckList">
                     </asp:CheckBoxList>
                 </td>
             </tr>
