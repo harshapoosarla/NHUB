@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using DAL.Repository;
 
 namespace Project_28Sep2018
 {
@@ -19,6 +20,16 @@ namespace Project_28Sep2018
 
         protected void yes_Click(object sender, EventArgs e)
         {
+            
+            ServiceLineRepository inventory = new ServiceLineRepository();
+            int Id = Convert.ToInt32(Request.QueryString["Id"]);
+
+            //int Id = Convert.ToInt32(Request.QueryString["Id"]);
+            //DeleteServiceLine deleteServiceLine = new DeleteServiceLine();
+            //Response.Redirect("SAServiceLines.aspx");
+
+            inventory.DeleteServiceLine(Id);
+
             Response.Redirect("SAServiceLines.aspx");
         }
 

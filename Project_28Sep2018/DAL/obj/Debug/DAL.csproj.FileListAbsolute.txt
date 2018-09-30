@@ -3,3 +3,9 @@ D:\harsha853\NHUB\Project_28Sep2018\DAL\bin\Debug\DAL.pdb
 D:\harsha853\NHUB\Project_28Sep2018\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 D:\harsha853\NHUB\Project_28Sep2018\DAL\obj\Debug\DAL.dll
 D:\harsha853\NHUB\Project_28Sep2018\DAL\obj\Debug\DAL.pdb
+D:\harsha853\GitHub\NHUB\Project_28Sep2018\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+D:\harsha853\GitHub\NHUB\Project_28Sep2018\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\harsha853\GitHub\NHUB\Project_28Sep2018\DAL\obj\Debug\DAL.dll
+D:\harsha853\GitHub\NHUB\Project_28Sep2018\DAL\obj\Debug\DAL.pdb
+D:\harsha853\GitHub\NHUB\Project_28Sep2018\DAL\bin\Debug\DAL.dll
+D:\harsha853\GitHub\NHUB\Project_28Sep2018\DAL\bin\Debug\DAL.pdb

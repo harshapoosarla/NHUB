@@ -13,7 +13,7 @@
             </tr>
             <tr>
                 <td style="width: 374px">
-                    <asp:Label ID="editslms" runat="server" Text="Service Line Managers:"></asp:Label>
+                    <asp:Label ID="editslms" runat="server" Text="Operation Managers:"></asp:Label>
                 </td>
                 <td>
                     <asp:CheckBoxList runat="server">

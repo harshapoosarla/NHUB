@@ -25,18 +25,12 @@ namespace Project_28Sep2018
             SLMList.DataTextField = "UserName";
             SLMList.DataValueField = "Id";
             SLMList.DataBind();
-
-
-
-
-
-    }
+        }
 
         protected void create_Click(object sender, EventArgs e)
         {
             string ServLineName = ServiceLineName.Text;
-            string SLMIds;
-
+            string SLMIds ;
             for(int SLMcount=0;SLMcount< SLMList.Items.Count; SLMcount++)
             {
                 if (SLMList.Items[SLMcount].Selected)
@@ -44,19 +38,11 @@ namespace Project_28Sep2018
                     SLMIds = SLMList.Items[SLMcount].Value+",";
                 }
             }
-
-
-
-
-
-
-
-
-
+            DAL.Repository.SLManagers SLMRepo = new DAL.Repository.SLManagers();
+            
 
             Response.Redirect("SAServiceLines.aspx");
         }
-
         protected void cancel_Click(object sender, EventArgs e)
         {
             Response.Redirect("SAServiceLines.aspx");
