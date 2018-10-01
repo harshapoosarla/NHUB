@@ -5,7 +5,7 @@
     </p>
 
     <p>
-    </p>
+        Do you want to delete??</p>
     <p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="yes" runat="server" BackColor="#99CCFF" Font-Bold="True" Height="30px" Text="Yes" Width="80px" OnClick="yes_Click" />

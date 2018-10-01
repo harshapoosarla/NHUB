@@ -28,12 +28,10 @@ namespace Project_28Sep2018
             SLMcheckList.DataTextField = "UserName";
             SLMcheckList.DataValueField = "Id";
             SLMcheckList.DataBind();
-            for(int i=0;i < SLMcheckList.Items.Count; i++)
+            for (int i = 0; i < SLMcheckList.Items.Count; i++)
             {
                 SLMcheckList.Items[i].Selected = true;
             }
-            
-
         }
 
         protected void update_Click(object sender, EventArgs e)
@@ -45,5 +43,7 @@ namespace Project_28Sep2018
         {
             Response.Redirect("~/SAServiceLines.aspx");
         }
+
+ 
     }
 }
