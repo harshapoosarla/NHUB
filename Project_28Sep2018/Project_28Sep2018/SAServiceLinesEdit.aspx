@@ -16,7 +16,10 @@
                     <asp:Label ID="editslms" runat="server" Text="ServiceLine Managers:"></asp:Label>
                 </td>
                 <td>
+                    <br />
                     <asp:CheckBoxList runat="server" ID="SLMcheckList">
+                    </asp:CheckBoxList> <br />
+                     <asp:CheckBoxList runat="server" ID="CheckBoxList1">
                     </asp:CheckBoxList>
                 </td>
             </tr>

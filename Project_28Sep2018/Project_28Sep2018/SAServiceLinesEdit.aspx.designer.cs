@@ -49,6 +49,15 @@ namespace Project_28Sep2018 {
         protected global::System.Web.UI.WebControls.CheckBoxList SLMcheckList;
         
         /// <summary>
+        /// CheckBoxList1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList1;
+        
+        /// <summary>
         /// cancel control.
         /// </summary>
         /// <remarks>

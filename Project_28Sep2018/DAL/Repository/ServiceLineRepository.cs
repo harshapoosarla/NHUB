@@ -118,6 +118,50 @@ namespace DAL.Repository
             connection.Close();
         }
 
+        public void EditServiceLine(int pServLineId, string pSLMids)
+        {
+            using (SqlConnection connection = new SqlConnection())
+            {
+                connection.ConnectionString = @"Data Source=ACULAP-119;Initial Catalog=NotificationHub;Integrated Security=True";
+                connection.Open();
+                SqlCommand sqlCommand = new SqlCommand("Proc_EditServLineManagers", connection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                //sqlCommand.Parameters.Add("@pServLineName", SqlDbType.NVarChar, 50).Value = pServLineName;
+                //int ServLineId = 0;//=Convert.ToInt32(sqlCommand.Parameters.Add("@pServLineId", SqlDbType.NVarChar, 50).Value);
+               
+                SqlParameter parServiceLineId = new SqlParameter()
+                {
+                    ParameterName = "@pServiceLineId",
+
+                    SqlDbType = SqlDbType.Int,
+                    Value = pServLineId,
+                    Direction = ParameterDirection.Input
+                };
+                sqlCommand.Parameters.Add(parServiceLineId);
+                sqlCommand.ExecuteNonQuery();
+                
+                string[] Slm = pSLMids.Split(',');
+                var Slm1 = Slm.Distinct();
+                foreach (string slms in Slm1)
+                {
+
+
+                    SqlCommand sqlCommand1 = new SqlCommand("Proc_InsertServLineManagers", connection);
+                    sqlCommand1.CommandType = CommandType.StoredProcedure;
+                    //sqlCommand1.Parameters.Add("@pId", SqlDbType.Int).Value =pId;
+                    sqlCommand1.Parameters.Add("@pServiceLineId", SqlDbType.Int).Value = pServLineId;
+                    sqlCommand1.Parameters.Add("@pUserId", SqlDbType.NVarChar).Value = slms;
+
+
+
+                    sqlCommand1.ExecuteNonQuery();
+                }
+                connection.Close();
+            }
+        }
+       
+
 
 
     }
@@ -133,7 +177,7 @@ namespace DAL.Repository
                 connection.Open();
                 SqlCommand sqlCommand = new SqlCommand("selectallproc", connection);
                 sqlCommand.CommandType = CommandType.StoredProcedure;
-                sqlCommand.Parameters.Add("@Action", SqlDbType.VarChar, 10).Value = "SELECT";
+                //sqlCommand.Parameters.Add("@Action", SqlDbType.VarChar, 10).Value = "SELECT";
                 using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
                 {
                     while (sqlDataReader.Read())
