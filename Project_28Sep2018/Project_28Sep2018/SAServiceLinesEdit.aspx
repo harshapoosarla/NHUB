@@ -4,10 +4,10 @@
         <br />
         <table class="nav-justified">
             <tr>
-                <td style="width: 374px">
+                <td style="width: 374px; height: 20px;">
                     <asp:Label ID="editnames" runat="server" Text="Name:"></asp:Label>
                 </td>
-                <td>
+                <td style="height: 20px">
                     <asp:Label ID="ServiceLineName" runat="server" Text="ServiceLineName"></asp:Label>
                 </td>
             </tr>

@@ -223,6 +223,8 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="SAServiceLines.aspx" />
     <Content Include="Site.Master" />
+    <Content Include="SLMServiceLines.aspx" />
+    <Content Include="SLMServiceLinesEdit.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -412,6 +414,20 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="SLMServiceLines.aspx.cs">
+      <DependentUpon>SLMServiceLines.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SLMServiceLines.aspx.designer.cs">
+      <DependentUpon>SLMServiceLines.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SLMServiceLinesEdit.aspx.cs">
+      <DependentUpon>SLMServiceLinesEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SLMServiceLinesEdit.aspx.designer.cs">
+      <DependentUpon>SLMServiceLinesEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">

@@ -12,10 +12,10 @@ namespace Project_28Sep2018
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           //if (!Context.User.IsInRole("Super Admin"))
-           //{
-           //    Response.Redirect("Access.aspx");
-           //}
+           if (!Context.User.IsInRole("Super Admin"))
+           {
+               Response.Redirect("Access.aspx");
+           }
            Table table = new Table();
            table.ID = "1";
            PlaceHolder1.Controls.Add(table);

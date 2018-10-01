@@ -165,6 +165,33 @@ namespace DAL.Repository
 
 
     }
+    public class SLMServiceLine {
+        public List<ServiceLine> servicelinelist = new List<ServiceLine>();
+        public List<ServiceLine> getSLDetails(string pUserId)
+        {
+            
+            using (SqlConnection connection = new SqlConnection())
+            {
+                connection.ConnectionString = @"Data Source=ACULAP-119;Initial Catalog=NotificationHub;Integrated Security=True";
+                connection.Open();
+                SqlCommand sqlCommand = new SqlCommand("Proc_ServiceLines", connection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                sqlCommand.Parameters.Add("@pUserId", SqlDbType.VarChar, 10).Value = pUserId;
+                using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
+                {
+                    while (sqlDataReader.Read())
+                    {
+                        servicelinelist.Add(new ServiceLine
+                        {
+                            Id = Convert.ToInt32(sqlDataReader["Id"].ToString()),
+                            Name = (sqlDataReader["Name"].ToString())
+                        });
+                    }
+                }
+            }
+            return servicelinelist;
+        }
+    }
     public class SelectAllUsers
     {
         public List<Users> servicelinelist = new List<Users>();
@@ -191,6 +218,7 @@ namespace DAL.Repository
                 }
             }
             return servicelinelist;
+
         }
     }
 }
