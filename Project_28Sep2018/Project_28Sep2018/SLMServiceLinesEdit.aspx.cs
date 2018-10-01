@@ -21,11 +21,12 @@ namespace Project_28Sep2018
                 string ServLineName = Request.QueryString["ServLineName"];
                 OMCheckList.Text = ServLineName;
                 string ServLineId = Request.QueryString["ID"];
-                ServiceLineRepository SLRepo = new ServiceLineRepository();
-                SLRepo.getServLineDetails(ServLineId);
-                SelectAllUsers selectAllUsers = new SelectAllUsers();
-
-                OMCheckList.DataSource = SLRepo.ServLineManTab;
+                SLMServiceLine SlMRepo = new SLMServiceLine();
+                SlMRepo.getServLineOMDetails(ServLineId);
+                SlMRepo.getAllOMDetails();
+                //SelectAllUsers selectAllUsers = new SelectAllUsers();
+                
+                OMCheckList.DataSource = SlMRepo.ServLineOMTab;
                 OMCheckList.DataTextField = "UserName";
                 OMCheckList.DataValueField = "Id";
                 OMCheckList.DataBind();
@@ -34,7 +35,7 @@ namespace Project_28Sep2018
                     OMCheckList.Items[i].Selected = true;
                 }
 
-                OMCheckList1.DataSource = selectAllUsers.getDetails();
+                OMCheckList1.DataSource = SlMRepo.ServLineOMList;
                 OMCheckList1.DataTextField = "UserName";
                 OMCheckList1.DataValueField = "Id";
 
@@ -50,7 +51,7 @@ namespace Project_28Sep2018
         protected void update_Click(object sender, EventArgs e)
         {
             int ServLineId = Convert.ToInt32(Request.QueryString["ID"]);
-            string SLMIds = "";
+            string OMIds = "";
             ServiceLineRepository SLrepo = new ServiceLineRepository();
 
 
@@ -58,7 +59,7 @@ namespace Project_28Sep2018
             {
                 if (OMCheckList.Items[SLMcount].Selected)
                 {
-                    SLMIds = SLMIds + OMCheckList.Items[SLMcount].Value + ",";
+                    OMIds = OMIds + OMCheckList.Items[SLMcount].Value + ",";
                 }
             }
 
@@ -66,13 +67,13 @@ namespace Project_28Sep2018
             {
                 if (OMCheckList1.Items[SLMcount].Selected)
                 {
-                    SLMIds = SLMIds + OMCheckList1.Items[SLMcount].Value + ",";
+                    OMIds = OMIds + OMCheckList1.Items[SLMcount].Value + ",";
                 }
             }
-            SLMIds = SLMIds.Substring(0, SLMIds.Length - 1);
+            OMIds = OMIds.Substring(0, OMIds.Length - 1);
 
 
-            SLrepo.EditServiceLine(ServLineId, SLMIds);
+            SLrepo.EditServiceLine(ServLineId, OMIds);
 
 
             Response.Redirect("~/SLMServiceLines.aspx");

@@ -118,7 +118,7 @@ namespace DAL.Repository
             connection.Close();
         }
 
-        public void EditServiceLine(int pServLineId, string pSLMids)
+        public void EditServiceLine(int pServLineId, string pSLMids)//copy
         {
             using (SqlConnection connection = new SqlConnection())
             {
@@ -129,7 +129,7 @@ namespace DAL.Repository
 
                 //sqlCommand.Parameters.Add("@pServLineName", SqlDbType.NVarChar, 50).Value = pServLineName;
                 //int ServLineId = 0;//=Convert.ToInt32(sqlCommand.Parameters.Add("@pServLineId", SqlDbType.NVarChar, 50).Value);
-               
+
                 SqlParameter parServiceLineId = new SqlParameter()
                 {
                     ParameterName = "@pServiceLineId",
@@ -140,7 +140,7 @@ namespace DAL.Repository
                 };
                 sqlCommand.Parameters.Add(parServiceLineId);
                 sqlCommand.ExecuteNonQuery();
-                
+
                 string[] Slm = pSLMids.Split(',');
                 var Slm1 = Slm.Distinct();
                 foreach (string slms in Slm1)
@@ -159,22 +159,26 @@ namespace DAL.Repository
                 }
                 connection.Close();
             }
+
         }
-       
-
-
-
     }
-    public class SLMServiceLine {
+
+
+
+
+    public class SLMServiceLine
+    {
         public List<ServiceLine> servicelinelist = new List<ServiceLine>();
+        public List<Users> ServLineOMList = new List<Users>();
+        public DataTable ServLineOMTab = new DataTable();
         public List<ServiceLine> getSLDetails(string pUserId)
         {
-            
+
             using (SqlConnection connection = new SqlConnection())
             {
                 connection.ConnectionString = @"Data Source=ACULAP-119;Initial Catalog=NotificationHub;Integrated Security=True";
                 connection.Open();
-                string sls = "select s.Id,s.Name from ServiceLineManager sm,ServiceLine s where s.Id=sm.ServiceLineId and  UserId='" + @pUserId+"'";
+                string sls = "select s.Id,s.Name from ServiceLineManager sm,ServiceLine s where s.Id=sm.ServiceLineId and  UserId='" + @pUserId + "'";
                 SqlCommand sqlCommand = new SqlCommand(sls, connection);
                 //sqlCommand.CommandType = CommandType.StoredProcedure;
                 //sqlCommand.Parameters.Add("@pUserId", SqlDbType.VarChar, 250).Value = pUserId;
@@ -191,6 +195,89 @@ namespace DAL.Repository
                 }
             }
             return servicelinelist;
+        }
+        public void EditServiceLineOM(int pServLineId, string pOMids)
+        {
+            using (SqlConnection connection = new SqlConnection())
+            {
+                connection.ConnectionString = @"Data Source=ACULAP-119;Initial Catalog=NotificationHub;Integrated Security=True";
+                connection.Open();
+                SqlCommand sqlCommand = new SqlCommand("Proc_EditServLineOpManagers", connection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                //sqlCommand.Parameters.Add("@pServLineName", SqlDbType.NVarChar, 50).Value = pServLineName;
+                //int ServLineId = 0;//=Convert.ToInt32(sqlCommand.Parameters.Add("@pServLineId", SqlDbType.NVarChar, 50).Value);
+
+                SqlParameter parServiceLineId = new SqlParameter()
+                {
+                    ParameterName = "@pServiceLineId",
+
+                    SqlDbType = SqlDbType.Int,
+                    Value = pServLineId,
+                    Direction = ParameterDirection.Input
+                };
+                sqlCommand.Parameters.Add(parServiceLineId);
+                sqlCommand.ExecuteNonQuery();
+
+                string[] Slm = pOMids.Split(',');
+                var Slm1 = Slm.Distinct();
+                foreach (string slms in Slm1)
+                {
+
+
+                    SqlCommand sqlCommand1 = new SqlCommand("Proc_InsertServLineOpManagers", connection);
+                    sqlCommand1.CommandType = CommandType.StoredProcedure;
+                    //sqlCommand1.Parameters.Add("@pId", SqlDbType.Int).Value =pId;
+                    sqlCommand1.Parameters.Add("@pServiceLineId", SqlDbType.Int).Value = pServLineId;
+                    sqlCommand1.Parameters.Add("@pUserId", SqlDbType.NVarChar).Value = slms;
+
+
+
+                    sqlCommand1.ExecuteNonQuery();
+                }
+                connection.Close();
+            }
+        }
+
+        public DataTable getServLineOMDetails(string pServLineId)
+        {
+
+            SqlDataAdapter adapter;
+            using (SqlConnection connection = new SqlConnection())
+            {
+                connection.ConnectionString = @"Data Source=ACULAP-119;Initial Catalog=NotificationHub;Integrated Security=True";
+                connection.Open();
+                string sql = "select u.UserName,u.Id from OperationManager o,ServiceLine s,AspNetUsers u where u.Id = o.OperationManagerId and o.ServicelineId =" + pServLineId;
+                adapter = new SqlDataAdapter(sql, connection);
+                //SqlCommand sqlCommand = new SqlCommand(sql, connection);
+                adapter.Fill(ServLineOMTab);
+
+            }
+            return ServLineOMTab;
+        }
+        public List<Users> getAllOMDetails()
+        {
+            using (SqlConnection connection = new SqlConnection())
+            {
+                connection.ConnectionString = @"Data Source=ACULAP-119;Initial Catalog=NotificationHub;Integrated Security=True";
+                connection.Open();
+                SqlCommand sqlCommand = new SqlCommand("Proc_SelectallOM", connection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                //sqlCommand.Parameters.Add("@Action", SqlDbType.VarChar, 250).Value = "SELECT";
+                using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
+                {
+                    while (sqlDataReader.Read())
+                    {
+                        ServLineOMList.Add(new Users
+                        {
+                            Id = sqlDataReader["Id"].ToString(),
+                            UserName = (sqlDataReader["UserName"].ToString())
+                        });
+                    }
+                }
+            }
+            return ServLineOMList;
+
         }
     }
     public class SelectAllUsers
