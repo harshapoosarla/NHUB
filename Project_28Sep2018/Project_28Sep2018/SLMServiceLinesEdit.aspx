@@ -8,7 +8,7 @@
                     <asp:Label ID="editnames" runat="server" Text="Name:"></asp:Label>
                 </td>
                 <td>
-                    <asp:Label ID="slname" runat="server" Text="ServiceLineName"></asp:Label>
+                    <asp:Label ID="ServLineName" runat="server" Text="ServiceLineName"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -16,10 +16,10 @@
                     <asp:Label ID="operationalmanager" runat="server" Text="OperationalManagers:"></asp:Label>
                 </td>
                 <td>
-                    <asp:CheckBoxList ID="omlist" runat="server">
+                    <asp:CheckBoxList ID="OMCheckList" runat="server">
                     </asp:CheckBoxList>
                     <br />
-                    <asp:CheckBoxList ID="CheckBoxList1" runat="server">
+                    <asp:CheckBoxList ID="OMCheckList1" runat="server">
                     </asp:CheckBoxList>
                 </td>
             </tr>
@@ -28,6 +28,11 @@
     <p>
     </p>
     <p>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="cancel" runat="server" BackColor="#99CCFF" Font-Bold="True" Height="30px" OnClick="cancel_Click" Text="Cancel" ToolTip="click to cancel" Width="80px" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="update" runat="server" BackColor="#99CCFF" Font-Bold="True" Height="30px" OnClick="update_Click" Text="Update" ToolTip="click to update" Width="80px" />
+
     </p>
     <p>
     </p>

@@ -22,13 +22,13 @@ namespace Project_28Sep2018 {
         protected global::System.Web.UI.WebControls.Label editnames;
         
         /// <summary>
-        /// slname control.
+        /// ServLineName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label slname;
+        protected global::System.Web.UI.WebControls.Label ServLineName;
         
         /// <summary>
         /// operationalmanager control.
@@ -40,21 +40,39 @@ namespace Project_28Sep2018 {
         protected global::System.Web.UI.WebControls.Label operationalmanager;
         
         /// <summary>
-        /// omlist control.
+        /// OMCheckList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList omlist;
+        protected global::System.Web.UI.WebControls.CheckBoxList OMCheckList;
         
         /// <summary>
-        /// CheckBoxList1 control.
+        /// OMCheckList1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList1;
+        protected global::System.Web.UI.WebControls.CheckBoxList OMCheckList1;
+        
+        /// <summary>
+        /// cancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button cancel;
+        
+        /// <summary>
+        /// update control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button update;
     }
 }

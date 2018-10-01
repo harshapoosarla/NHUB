@@ -174,9 +174,10 @@ namespace DAL.Repository
             {
                 connection.ConnectionString = @"Data Source=ACULAP-119;Initial Catalog=NotificationHub;Integrated Security=True";
                 connection.Open();
-                SqlCommand sqlCommand = new SqlCommand("Proc_ServiceLines", connection);
-                sqlCommand.CommandType = CommandType.StoredProcedure;
-                sqlCommand.Parameters.Add("@pUserId", SqlDbType.VarChar, 10).Value = pUserId;
+                string sls = "select s.Id,s.Name from ServiceLineManager sm,ServiceLine s where s.Id=sm.ServiceLineId and  UserId='" + @pUserId+"'";
+                SqlCommand sqlCommand = new SqlCommand(sls, connection);
+                //sqlCommand.CommandType = CommandType.StoredProcedure;
+                //sqlCommand.Parameters.Add("@pUserId", SqlDbType.VarChar, 250).Value = pUserId;
                 using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
                 {
                     while (sqlDataReader.Read())
