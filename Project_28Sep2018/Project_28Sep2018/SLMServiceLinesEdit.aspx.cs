@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using DAL.Repository;
 
+
 namespace Project_28Sep2018
 {
     public partial class SLMServiceLinesEdit1 : System.Web.UI.Page
@@ -16,16 +17,21 @@ namespace Project_28Sep2018
             {
                 Response.Redirect("Access.aspx");
             }
+            string ServiceName = Request.QueryString["ServLineName"];
+            ServLineName.Text = ServiceName;
             if (!IsPostBack)
             {
                 string ServLineName = Request.QueryString["ServLineName"];
-                OMCheckList.Text = ServLineName;
+                //OMCheckList.Text = ServLineName;
                 string ServLineId = Request.QueryString["ID"];
+                
                 SLMServiceLine SlMRepo = new SLMServiceLine();
                 SlMRepo.getServLineOMDetails(ServLineId);
                 SlMRepo.getAllOMDetails();
-                //SelectAllUsers selectAllUsers = new SelectAllUsers();
-                
+                SlMRepo.getAllOMDetailsOfServiceLineManagers(ServLineId);
+
+                SelectAllUsers selectAllUsers = new SelectAllUsers();
+
                 OMCheckList.DataSource = SlMRepo.ServLineOMTab;
                 OMCheckList.DataTextField = "UserName";
                 OMCheckList.DataValueField = "Id";
@@ -35,11 +41,17 @@ namespace Project_28Sep2018
                     OMCheckList.Items[i].Selected = true;
                 }
 
-                OMCheckList1.DataSource = SlMRepo.ServLineOMList;
-                OMCheckList1.DataTextField = "UserName";
-                OMCheckList1.DataValueField = "Id";
+                //OMCheckList1.DataSource = SlMRepo.ServLineOMList;
+                //OMCheckList1.DataTextField = "UserName";
+                //OMCheckList1.DataValueField = "Id";
 
-                OMCheckList1.DataBind();
+                //OMCheckList1.DataBind();
+
+                CheckBoxList2.DataSource = SlMRepo.getAllOMDetailsOfServiceLineManagers(ServLineId);
+                CheckBoxList2.DataTextField = "UserName";
+                CheckBoxList2.DataValueField = "Id";
+
+                CheckBoxList2.DataBind();
             }
         }
 
@@ -70,11 +82,14 @@ namespace Project_28Sep2018
                     OMIds = OMIds + OMCheckList1.Items[SLMcount].Value + ",";
                 }
             }
+
+
+
             OMIds = OMIds.Substring(0, OMIds.Length - 1);
 
 
-            SLrepo.EditServiceLine(ServLineId, OMIds);
-
+           // SLrepo.EditServiceLine(ServLineId, OMIds);
+            SLrepo.UpdateAfterDeleteServiceLine(ServLineId, OMIds);
 
             Response.Redirect("~/SLMServiceLines.aspx");
         }

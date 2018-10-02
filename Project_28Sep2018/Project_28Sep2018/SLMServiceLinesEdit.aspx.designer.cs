@@ -58,6 +58,15 @@ namespace Project_28Sep2018 {
         protected global::System.Web.UI.WebControls.CheckBoxList OMCheckList1;
         
         /// <summary>
+        /// CheckBoxList2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList2;
+        
+        /// <summary>
         /// cancel control.
         /// </summary>
         /// <remarks>

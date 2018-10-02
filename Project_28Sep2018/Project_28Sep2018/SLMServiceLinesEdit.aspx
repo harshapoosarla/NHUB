@@ -8,7 +8,7 @@
                     <asp:Label ID="editnames" runat="server" Text="Name:"></asp:Label>
                 </td>
                 <td>
-                    <asp:Label ID="ServLineName" runat="server" Text="ServiceLineName"></asp:Label>
+                    <asp:Label ID="ServLineName" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -20,6 +20,8 @@
                     </asp:CheckBoxList>
                     <br />
                     <asp:CheckBoxList ID="OMCheckList1" runat="server">
+                    </asp:CheckBoxList>
+                     <asp:CheckBoxList ID="CheckBoxList2" runat="server">
                     </asp:CheckBoxList>
                 </td>
             </tr>
